@@ -1,13 +1,20 @@
 
 let myinput = document.querySelector("#my-input");
-let mybutton = document.querySelector("#my-button");
+let form = document.querySelector("#wheather-form");
+let screenparagraph = document.querySelector("#wheather-update");
+//let mybutton = document.querySelector("#my-button");
 
-mybutton.addEventListener("click", () => {
+form.addEventListener("submit", (event) => {
 
-    if(myinput.value <= 20){
-        document.querySelector("#wheather-update").innerText = "Today Wheater Is Cold" 
+   event.preventDefault(); //is se page referesh nhi hota
+
+   let temperature = myinput.value;
+   let conditions = temperature < 20;
+
+    if(conditions){
+        screenparagraph.innerText = "Today Wheater Is Cold" 
     }
     else{
-        document.querySelector("#wheather-update").innerText = "Today Wheater Is Hot"
+        screenparagraph.innerText = "Today Wheater Is Hot"
     }
 });
