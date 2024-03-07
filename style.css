@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    filter: brightness(50px);
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.7)), url(./img/imge.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box{
+    height: 300px;
+    width: 400px;
+    border: 2px solid #666;
+    background-color: rgba(96, 108, 56, 0.7);
+}
