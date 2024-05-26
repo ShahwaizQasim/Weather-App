@@ -10,13 +10,20 @@
   <body>
     <div class="box">
       <h2>Wheather Check</h2>
+      <br/>
       <form id="wheather-form">
         <input type="text" placeholder="Wheather Check" id="my-input" />
-        <p id="wheather-update"></p>
+        <div id="citytemp"></div>
+        <div id="cityhumidity"></div>
+        <div id="citywind"></div>
+        <div id="city_precipitation"></div>
+        <div id="city_feelslike"></div>
+        <!-- <div id="citytemp"></div> -->
         <button type="submit">Click</button>
       </form>
     </div>
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./app.js"></script>
   </body>
 </html>
