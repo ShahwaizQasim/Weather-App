@@ -127,6 +127,11 @@ input::placeholder{
 input:focus{
     border: 4px solid #ccc;
 }
+h1{
+    color: white;
+    margin-top: 20px;
+    font-family: "Poppins", sans-serif;
+}
 h3{
     color: white;
     margin-top: 20px;

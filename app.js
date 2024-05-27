@@ -16,10 +16,11 @@ let cityFeels = document.querySelector("#city_FeelsLike");
   event.preventDefault(); //is se page referesh nhi hota
 
    let city_temperature = myInput.value;
-   temp.innerText = "loading...";
+  //  let city_firstAlphaCapital = city_temperature.slice(0,1).UpperCase();
+   humidity.innerText = "loading...";
 
    const response = await axios( `https://api.openweathermap.org/data/2.5/weather?q=${city_temperature}&appid=${API_KEY}&units=metric`);
-   temp.innerText = `${response.data.main.temp}°C`;
+   temp.innerHTML = `${response.data.main.temp} °C <br/> ${city_temperature}`;
    humidity.innerText = `${response.data.main.humidity}`;
    wind.innerText = `${response.data.wind.speed}°C`;
    cityPrecipitation.innerText = `${response.data.main.pressure}°C`;
@@ -43,7 +44,6 @@ const body = document.querySelector("body");
 const box = document.querySelector(".box-light");
 const navbar = document.querySelector(".navbar-light");
 const button = document.querySelector("#btn1");
-// const icon = document.querySelector("#icon");
 isDarkMode = true;
 
 button.addEventListener("click", () => {
@@ -51,13 +51,13 @@ button.addEventListener("click", () => {
     body.className = `dark`;
     box.className = "box-dark";
     navbar.className = "navbar-dark";
-    button.innerText = "Light Mode";
+    button.innerHTML = "Light Mode <i class='fa-regular fa-sun'></i>";
     // isDarkMode = !isDarkMode;
   } else {
     body.className = "light";
     box.className = "box-light";
     navbar.className = "navbar-light";
-    button.innerText = "Dark Mode";
+    button.innerHTML = "Dark Mode <i class='fa-solid fa-moon'></i>";
     // isDarkMode = !isDarkMode;
   }
    isDarkMode = !isDarkMode;
