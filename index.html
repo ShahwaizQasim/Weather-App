@@ -7,21 +7,45 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
 
-  <body>
+  <body class="light">
     <div class="box">
-      <h2>Wheather Check</h2>
-      <br/>
+      <h2>Weather App</h2>
       <form id="weatherForm">
+        <center>
         <input type="text" placeholder="Wheather Check" id="my-input" />
-        <div id="cityTemp"></div>
-        <div id="cityHumidity"></div>
-        <div id="cityWind"></div>
-        <div id="city_Precipitation"></div>
-        <div id="city_FeelsLike"></div>
+        <h3 id="cityTemp"></h3>
+        <h3 id="cityHumidity"></h3>
+        <h3 id="cityWind"></h3>
+        <h3 id="city_Precipitation"></h3>
+        <h3 id="city_FeelsLike"></h3>
         <!-- <div id="citytemp"></div> -->
-        <button type="submit">Click</button>
+          <button type="submit">Click</button>
+          <br/>
+          <button id="btn1">mode</button>
+        </center>
       </form>
     </div>
+
+
+    <script>
+
+      const body = document.querySelector("body");
+      // const div = document.querySelecto("div");
+      const button = document.querySelector("#btn1");
+      isDarkMode = true;
+
+      button.addEventListener("click", () => {
+         if (isDarkMode === true) {
+          body.className = "dark";
+          button.innerText = "Light Mode"
+         }else{
+          body.className = "light";
+          button.innerText = "Dark Mode";
+         }
+         isDarkMode = !isDarkMode;
+      });
+
+    </script>
     
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./app.js"></script>

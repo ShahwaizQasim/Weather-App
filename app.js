@@ -20,10 +20,10 @@ let cityFeels = document.querySelector("#city_FeelsLike");
 
    const response = await axios( `https://api.openweathermap.org/data/2.5/weather?q=${city_temperature}&appid=${API_KEY}&units=metric`);
    temp.innerText = `${response.data.main.temp}°C`;
-   humidity.innerText = `${response.data.main.temp}°C`;
-   wind.innerText = `${response.data.main.temp}°C`;
-   cityPrecipitation.innerText = `${response.data.main.temp}°C`;
-   cityFeels.innerText = `${response.data.main.temp}°C`;
+   humidity.innerText = `${response.data.main.humidity}`;
+   wind.innerText = `${response.data.wind.speed}°C`;
+   cityPrecipitation.innerText = `${response.data.main.pressure}°C`;
+   cityFeels.innerText = `${response.data.main.feels_like}°C`;
    console.log(response);
 
  }catch(error){
