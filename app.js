@@ -36,8 +36,32 @@ form.addEventListener("submit", formHandler);
 
 
 
+/* dark mode and light mode */
 
+/* elements ko select kiya hai */ 
+const body = document.querySelector("body");
+const box = document.querySelector(".box-light");
+const navbar = document.querySelector(".navbar-light");
+const button = document.querySelector("#btn1");
+// const icon = document.querySelector("#icon");
+isDarkMode = true;
 
+button.addEventListener("click", () => {
+  if (isDarkMode === true) {
+    body.className = `dark`;
+    box.className = "box-dark";
+    navbar.className = "navbar-dark";
+    button.innerText = "Light Mode";
+    // isDarkMode = !isDarkMode;
+  } else {
+    body.className = "light";
+    box.className = "box-light";
+    navbar.className = "navbar-light";
+    button.innerText = "Dark Mode";
+    // isDarkMode = !isDarkMode;
+  }
+   isDarkMode = !isDarkMode;
+});
 
 
 
