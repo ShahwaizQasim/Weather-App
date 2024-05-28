@@ -18,26 +18,28 @@ let navbar1 = document.querySelector(".navbar-light");
   event.preventDefault(); //is se page referesh nhi hota
 
    let city_temperature = myInput.value;
-   
+
    loading.innerText = "loading...";
-   Button.disabled = true; // user ky ak bar click krny par button disable ho ha jeaga
+   Button.disabled = true; // user ky ak bar click krny par button ko disable kiya hai
 
    const response = await axios( `https://api.openweathermap.org/data/2.5/weather?q=${city_temperature}&appid=${API_KEY}&units=metric`);
+   loading.innerText = "";
+   Button.disabled = false; // response any ky bad button ko wapis enable kiya hai
    console.log(response);
+   
    navbar1.style.backgroundColor = "transparent"; // response any par navbar ka color transparent kiya hai
    navbar1.style.boxShadow = "0px 0px 0px #ccc"; // response any par navbar ka box shadow 0 kiya hai
-   loading.innerText = "";
-   Button.disabled = false; // respose any ky bad button wapis enable ho jaega
    temp.innerHTML = `${response.data.main.temp} °C <br/> ${response.data.name}`;
    humidity.innerText = `Humidity: ${response.data.main.humidity} %`;
    wind.innerText = `Wind: ${response.data.wind.speed} km/h`;
    cityPressure.innerText = `Pressure: ${response.data.main.pressure}hpa`;
    cityFeels.innerText = `Feels Like: ${response.data.main.feels_like}°C`;
-   console.log(response);
+  
+   form.reset();
 
  }catch(error){
    //console.log(error);
-   temp.innerText = error?.response?.data?.message || "Unknown Error"
+   loading.innerText = error?.response?.data?.message || "Unknown Error"
  }
 };
 
