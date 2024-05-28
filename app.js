@@ -12,6 +12,8 @@ let wind = document.querySelector("#cityWind");
 let cityPressure = document.querySelector("#city_Pressure");
 let cityFeels = document.querySelector("#city_FeelsLike");
 let navbar1 = document.querySelector(".navbar-light");
+const icon = document.querySelector("#weather-icon");
+
 
  const formHandler = async (event) => {
  try{
@@ -19,10 +21,15 @@ let navbar1 = document.querySelector(".navbar-light");
 
    let city_temperature = myInput.value;
 
+   temp.innerText = "";
    loading.innerText = "loading...";
+   humidity.innerText = "";
+   wind.innerText = "";
+   cityPressure = "";
+   cityFeels = ""
    Button.disabled = true; // user ky ak bar click krny par button ko disable kiya hai
 
-   const response = await axios( `https://api.openweathermap.org/data/2.5/weather?q=${city_temperature}&appid=${API_KEY}&units=metric`);
+   const response = await axios( `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric&q=${city_temperature}`);
    loading.innerText = "";
    Button.disabled = false; // response any ky bad button ko wapis enable kiya hai
    console.log(response);
@@ -34,7 +41,9 @@ let navbar1 = document.querySelector(".navbar-light");
    wind.innerText = `Wind: ${response.data.wind.speed} km/h`;
    cityPressure.innerText = `Pressure: ${response.data.main.pressure}hpa`;
    cityFeels.innerText = `Feels Like: ${response.data.main.feels_like}°C`;
-  
+  const iconLink = `https://openweathermap.org/img/wn/01d.png`
+
+  icon.src = iconLink
    form.reset();
 
  }catch(error){
