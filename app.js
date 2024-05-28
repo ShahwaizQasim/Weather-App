@@ -1,30 +1,38 @@
 
 let form = document.querySelector("#weatherForm");
 let myInput = document.querySelector("#my-input");
+let Button =  document.querySelector("button[type='submit']");
 const API_KEY = "0cddb8b14288b6d5d30fc7f9c60711ea";
 
 /* Api data ko show krwany ky liye kuch element ko select kiya hai */
 let temp = document.querySelector("#cityTemp");
+let loading = document.querySelector("#loading");
 let humidity = document.querySelector("#cityHumidity");
 let wind = document.querySelector("#cityWind");
-let cityPrecipitation = document.querySelector("#city_Precipitation");
+let cityPressure = document.querySelector("#city_Pressure");
 let cityFeels = document.querySelector("#city_FeelsLike");
-//let mybutton = document.querySelector("#my-button");
+let navbar1 = document.querySelector(".navbar-light");
 
  const formHandler = async (event) => {
  try{
   event.preventDefault(); //is se page referesh nhi hota
 
    let city_temperature = myInput.value;
-  //  let city_firstAlphaCapital = city_temperature.slice(0,1).UpperCase();
-   humidity.innerText = "loading...";
+   
+   loading.innerText = "loading...";
+   Button.disabled = true; // user ky ak bar click krny par button disable ho ha jeaga
 
    const response = await axios( `https://api.openweathermap.org/data/2.5/weather?q=${city_temperature}&appid=${API_KEY}&units=metric`);
-   temp.innerHTML = `${response.data.main.temp} °C <br/> ${city_temperature}`;
-   humidity.innerText = `${response.data.main.humidity}`;
-   wind.innerText = `${response.data.wind.speed}°C`;
-   cityPrecipitation.innerText = `${response.data.main.pressure}°C`;
-   cityFeels.innerText = `${response.data.main.feels_like}°C`;
+   console.log(response);
+   navbar1.style.backgroundColor = "transparent"; // response any par navbar ka color transparent kiya hai
+   navbar1.style.boxShadow = "0px 0px 0px #ccc"; // response any par navbar ka box shadow 0 kiya hai
+   loading.innerText = "";
+   Button.disabled = false; // respose any ky bad button wapis enable ho jaega
+   temp.innerHTML = `${response.data.main.temp} °C <br/> ${response.data.name}`;
+   humidity.innerText = `Humidity: ${response.data.main.humidity} %`;
+   wind.innerText = `Wind: ${response.data.wind.speed} km/h`;
+   cityPressure.innerText = `Pressure: ${response.data.main.pressure}hpa`;
+   cityFeels.innerText = `Feels Like: ${response.data.main.feels_like}°C`;
    console.log(response);
 
  }catch(error){

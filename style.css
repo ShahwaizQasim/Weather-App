@@ -131,11 +131,20 @@ h1{
     color: white;
     margin-top: 20px;
     font-family: "Poppins", sans-serif;
+    margin-top: 40px;
+    font-weight: 500;
+    font-size: 2.5rem;
 }
 h3{
     color: white;
     margin-top: 20px;
     font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+.parent{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
 }
 button{
     height: 45px;
