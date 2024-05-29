@@ -16,22 +16,26 @@
 
   <body class="light">
     <div class="navbar-light">
-      <h2>Weather App</h2>
+      <h2 class="weather-heading">Weather App</h2>
       <button id="btn1">Dark Mode <i class="fa-solid fa-moon"></i></button>
     </div>
 
     <div class="box-light">
+      <div class="weather-header">
+        <h2 class="weather-heading1">Weather App</h2>
+        <button id="btn2"><i class="fa-solid fa-moon"></i></button>
+      </div>
       <form id="weatherForm">
         <center>
-          <img src="" id="weather-icon" alt="">
+          <!-- <img src="" id="weather-icon" alt=""> -->
           <input
             type="text"
             placeholder="Enter Your City Name"
             id="my-input"
             required
           />
+          <h3 id="message"></h3>
           <h1 id="cityTemp"></h1>
-          <h3 id="loading"></h3>
         </center>
       <div class="parent">
         <div class="humidity_Wind">
