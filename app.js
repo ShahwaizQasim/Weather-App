@@ -15,6 +15,7 @@ const footer = document.querySelector(".footer-light")
 const cityShow = document.querySelector("#cityShow");
 const conditionShow = document.querySelector("#cityCondition");
 const icon = document.querySelector("#weather-icon");
+const CurrentDateShow = document.querySelector("#dateShow");
 
 const formHandler = async (event) => {
   try {
@@ -53,8 +54,16 @@ const formHandler = async (event) => {
     wind.innerText = `Wind: ${response.data.wind.speed} km/h`;
     cityPressure.innerText = `Pressure: ${response.data.main.pressure}hpa`;
     cityFeels.innerText = `Feels Like: ${response.data.main.feels_like}°C`;
-    //  const iconLink = `https://openweathermap.org/img/wn/01d.png`
-    //  icon.src = iconLink
+
+    // weather kay icon show kiye hain api se 
+    const iconLink = `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`;
+    icon.src = iconLink;
+
+    // current date show 
+    const CurrentDate = new Date();
+    const Time = CurrentDate.toDateString();
+    //console.log(Time);
+    CurrentDateShow.innerText = Time;
     
   } catch (error) {
     //console.log(error);
@@ -62,7 +71,7 @@ const formHandler = async (event) => {
   } finally {
     form.reset(); // to clear input value only if form is submit successfully
     Button.disabled = false; // response any ky bad button ko wapis enable kiya hai
-    console.log("finallay chala");
+    //console.log("finallay chala");
   }
 };
 
@@ -115,7 +124,6 @@ button2.addEventListener("click", () => {
   }
   isDarkMode = !isDarkMode;
 });
-
 
 
 /* error handling */
