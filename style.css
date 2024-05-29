@@ -66,7 +66,7 @@
     background-color: var(--background-color);
     box-shadow: 0px 0px 8px #666;
     padding-top: 25px;
-    padding-bottom: 90px;
+    padding-bottom: 50px;
     border-radius: 20px;
     position: relative;
 } 
@@ -79,7 +79,7 @@
     background-color: rgba(5, .5, 5, 0.1);
     box-shadow: 0px 0px 8px #666;  
     padding-top: 25px;
-    padding-bottom: 90px;
+    padding-bottom: 50px;
     border-radius: 20px;
     position: relative;
 }
@@ -162,6 +162,33 @@ input::placeholder{
 input:focus{
     border: 4px solid #ccc;
 }
+
+/* pre loader */
+.square{
+    width: 60px;
+    height: 60px;
+    background-image:repeating-conic-gradient(rgba(46, 64, 83, 0.4) 10%,#B3B6B7 100%);
+    padding: 15px 0px 0px 15px;
+    animation: rotate 1s linear infinite;
+    border-radius: 100%;
+    margin:auto;
+    margin-block: 20px;
+	display: none;
+}
+
+.shape1{
+    width: 40px;
+    height: 40px;
+    float: left;
+    background-color: transparent;
+    border-radius: 100%;
+}
+
+@keyframes rotate{
+    0% {transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
+
 /* temparature icon ko display flex kiya hai  */
 .cityTemperature{
     display: flex;
@@ -171,7 +198,7 @@ h1{
     color: white;
     margin-top: 20px;
     font-family: "Poppins", sans-serif;
-    margin-top: 40px;
+    margin-top: 30px;
     font-weight: 500;
     font-size: 2.2rem;
 }
@@ -190,6 +217,7 @@ h1{
     margin-top: 10px;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
+    font-size: 1.3rem;
 }
 img{
     height: 100px;
@@ -205,6 +233,8 @@ h4{
     margin-top: 15px;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
+    font-size: 1.1rem;
+    font-weight: normal;
 }
 .parent{
     display: flex;
@@ -214,7 +244,7 @@ h4{
 .form-button{
     height: 45px;
     width: 180px;
-    margin-top: 20px !important;
+    margin-top: 40px !important;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
@@ -253,7 +283,49 @@ h4{
 }
 
 /* media query add  */
-
+@media screen and (max-width:1024px) {
+    .weather-heading{
+        display: none;
+    }
+    #btn1{
+        display: none;
+    }
+     .weather-heading1{
+        display: block;
+    }
+    #btn2{
+        display: block;
+    }
+    .navbar-light{
+        background-color: transparent;
+        box-shadow: 0 0 0 #ccc;
+    }
+    .navbar-dark{
+        background-color: transparent;
+        box-shadow: 0 0 0 #ccc;
+    }
+    input{
+        width: 90%;
+        margin-top: 50px !important;
+    }
+    .form-button{
+        margin-top: 25px !important;
+    }
+    .footer-light{
+        background-color: transparent;
+        box-shadow: 0 0 0 #ccc;
+    }
+    .footer-dark{
+        background-color: transparent;
+        box-shadow: 0 0 0 #ccc;
+    }
+    .footer-heading{
+        /* display: none; */
+        font-size: 0.9rem;
+        position: relative;
+        bottom: 10px;
+    }
+}
 @media screen and (max-width:830px) {
     .box-light{
         width: 90%;
@@ -265,6 +337,9 @@ h4{
 @media screen and (max-width:530px) {
     .navbar-light{
         height: 80px;
+    }
+    h1{
+        font-size: 1.8rem;
     }
     .weather-heading{
         /* display: none; */
@@ -279,7 +354,9 @@ h4{
         right: 20px;
     }
     .footer-heading{
-        font-size: 1rem;
+        font-size: 0.8rem;
+        position: relative;
+        bottom: 15px;
     }
 }
 
@@ -306,10 +383,21 @@ h4{
     }
     input{
         width: 90%;
-        margin-top: 50px !important;
+        margin-top: 40px !important;
+    }
+    h1{
+        font-size: 1.6rem;
+    }
+    .h2{
+        font-size: 1.1rem;
+        font-weight: normal;
+    }
+    h4{
+        font-size: 0.9rem;
+        font-weight: normal;
     }
     .form-button{
-        margin-top: 0px !important;
+        margin-top: 25px !important;
     }
     .footer-light{
         background-color: transparent;
@@ -321,9 +409,9 @@ h4{
     }
     .footer-heading{
         /* display: none; */
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         position: relative;
-        top: 20px;
+        bottom: 30px;
     }
 }
    

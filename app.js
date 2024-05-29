@@ -1,10 +1,13 @@
+// https://rapidapi.com/hub api's ki website
+// skeleton loading animation 
+
 const form = document.querySelector("#weatherForm");
 const myInput = document.querySelector("#my-input");
 const Button = document.querySelector("button[type='submit']");
 const API_KEY = "0cddb8b14288b6d5d30fc7f9c60711ea";
 
 /* Api data ko show krwany ky liye kuch element ko select kiya hai */
-const message = document.querySelector("#message");
+const message = document.querySelector(".square");
 const temp = document.querySelector("#cityTemp");
 const humidity = document.querySelector("#cityHumidity");
 const wind = document.querySelector("#cityWind");
@@ -23,7 +26,7 @@ const formHandler = async (event) => {
 
     let city_temperature = myInput.value;
 
-    message.innerText = "loading..."; // showing loading
+    message.style.display = 'block'; // showing loading
     cityShow.innerText = "";
     conditionShow.innerText = "";
     temp.innerText = "";
@@ -31,6 +34,8 @@ const formHandler = async (event) => {
     wind.innerText = "";
     cityPressure.innerText = "";
     cityFeels.innerText = "";
+    icon.src = "";
+    CurrentDateShow.innerText = "";
     Button.disabled = true; // user ky ak bar click krny par button ko disable kiya hai
 
     const response = await axios(
@@ -38,7 +43,7 @@ const formHandler = async (event) => {
     );
     console.log(response);
 
-    message.innerText = "";
+    message.style.display = 'none';
 
 
     navbar.style.backgroundColor = "transparent"; // response any par navbar ka color transparent kiya hai
@@ -52,7 +57,7 @@ const formHandler = async (event) => {
     temp.innerHTML = `${response.data.main.temp} °C <br/>`;
     humidity.innerText = `Humidity: ${response.data.main.humidity} %`;
     wind.innerText = `Wind: ${response.data.wind.speed} km/h`;
-    cityPressure.innerText = `Pressure: ${response.data.main.pressure}hpa`;
+    cityPressure.innerText = `Pressure: ${response.data.main.pressure} mb`;
     cityFeels.innerText = `Feels Like: ${response.data.main.feels_like}°C`;
 
     // weather kay icon show kiye hain api se 
@@ -67,18 +72,27 @@ const formHandler = async (event) => {
     
   } catch (error) {
     //console.log(error);
-    message.innerText = error?.response?.data?.message || "Unknown Error";
+    swal({
+      icon: "error",
+      title: "Error",
+      text:  error?.response?.data?.message || "Unknown Error",
+    });
+   
+    //message.innerText = error?.response?.data?.message || "Unknown Error";
   } finally {
     form.reset(); // to clear input value only if form is submit successfully
     Button.disabled = false; // response any ky bad button ko wapis enable kiya hai
     //console.log("finallay chala");
+    message.style.display = 'none';
+
   }
 };
 
 form.addEventListener("submit", formHandler);
 
-/* dark mode and light mode */
 
+
+/* dark mode and light mode */
 /* elements ko select kiya hai */
 const body = document.querySelector("body");
 const box = document.querySelector(".box-light");
