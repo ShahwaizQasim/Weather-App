@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
+    <link rel="icon" href="./img/badal.png">
     <link rel="stylesheet" href="./style.css" />
     <link
       rel="stylesheet"
@@ -15,11 +16,13 @@
   </head>
 
   <body class="light">
+    <!-- ########################### navbar ##################################### -->
     <div class="navbar-light">
       <h2 class="weather-heading">Weather App</h2>
       <button id="btn1">Dark Mode <i class="fa-solid fa-moon"></i></button>
     </div>
 
+    <!-- ##################################### box ############################################## -->
     <div class="box-light">
       <div class="weather-header">
         <h2 class="weather-heading1">Weather App</h2>
@@ -34,6 +37,7 @@
             id="my-input"
             required
           />
+          <!-- temperature show -->
           <h3 id="message"></h3>
           <h1 id="cityTemp"></h1>
         </center>
@@ -47,11 +51,14 @@
           <h3 id="city_FeelsLike"></h3>
         </div>
       </div>
-          <!-- <div id="citytemp"></div> -->
-         <center> <button type="submit">Weather Check</button></center>
-          <br />
-        
+         <center> <button type="submit" class="form-button">Weather Check</button></center>
       </form>
+    </div>
+
+    <div class="footer-light">
+      <a href="https://www.linkedin.com/in/syed-shahwaiz-qasim-01467b26b/" target="_blank">
+        <h3 class="footer-heading">Ⓒ Designed and Developed by Shahwaiz Qasim</h3>
+      </a>
     </div>
 
     

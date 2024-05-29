@@ -1,16 +1,17 @@
-let form = document.querySelector("#weatherForm");
-let myInput = document.querySelector("#my-input");
-let Button = document.querySelector("button[type='submit']");
+const form = document.querySelector("#weatherForm");
+const myInput = document.querySelector("#my-input");
+const Button = document.querySelector("button[type='submit']");
 const API_KEY = "0cddb8b14288b6d5d30fc7f9c60711ea";
 
 /* Api data ko show krwany ky liye kuch element ko select kiya hai */
-let message = document.querySelector("#message");
-let temp = document.querySelector("#cityTemp");
-let humidity = document.querySelector("#cityHumidity");
-let wind = document.querySelector("#cityWind");
-let cityPressure = document.querySelector("#city_Pressure");
-let cityFeels = document.querySelector("#city_FeelsLike");
-let navbar1 = document.querySelector(".navbar-light");
+const message = document.querySelector("#message");
+const temp = document.querySelector("#cityTemp");
+const humidity = document.querySelector("#cityHumidity");
+const wind = document.querySelector("#cityWind");
+const cityPressure = document.querySelector("#city_Pressure");
+const cityFeels = document.querySelector("#city_FeelsLike");
+const navbar = document.querySelector(".navbar-light");
+const footer = document.querySelector(".footer-light")
 const icon = document.querySelector("#weather-icon");
 
 const formHandler = async (event) => {
@@ -30,13 +31,17 @@ const formHandler = async (event) => {
     const response = await axios(
       `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric&q=${city_temperature}`
     );
+    // console.log(response);
 
     message.innerText = "";
 
-    console.log(response);
 
-    navbar1.style.backgroundColor = "transparent"; // response any par navbar ka color transparent kiya hai
-    navbar1.style.boxShadow = "0px 0px 0px #ccc"; // response any par navbar ka box shadow 0 kiya hai
+    navbar.style.backgroundColor = "transparent"; // response any par navbar ka color transparent kiya hai
+    navbar.style.boxShadow = "0px 0px 0px #ccc"; // response any par navbar ka box shadow 0 kiya hai
+    footer.style.backgroundColor = "transparent"; // response any par footer ka color transparent kiya hai
+    footer.style.boxShadow = "0px 0px 0px #ccc"; // response any par footer ka box shadow 0 kiya hai
+
+  //  Api se weather ka data aya hai ussy print krwaya hai 
     temp.innerHTML = `${response.data.main.temp} °C <br/> ${response.data.name}`;
     humidity.innerText = `Humidity: ${response.data.main.humidity} %`;
     wind.innerText = `Wind: ${response.data.wind.speed} km/h`;
@@ -62,7 +67,6 @@ form.addEventListener("submit", formHandler);
 /* elements ko select kiya hai */
 const body = document.querySelector("body");
 const box = document.querySelector(".box-light");
-const navbar = document.querySelector(".navbar-light");
 const button1 = document.querySelector("#btn1");
 const button2 = document.querySelector("#btn2");
 
@@ -74,12 +78,14 @@ button1.addEventListener("click", () => {
     body.className = `dark`;
     box.className = "box-dark";
     navbar.className = "navbar-dark";
+    footer.className = "footer-dark";
     button1.innerHTML = "Light Mode <i class='fa-regular fa-sun'></i>";
     // isDarkMode = !isDarkMode;
   } else {
     body.className = "light";
     box.className = "box-light";
     navbar.className = "navbar-light";
+    footer.className = "footer-light";
     button1.innerHTML = "Dark Mode <i class='fa-solid fa-moon'></i>";
     // isDarkMode = !isDarkMode;
   }

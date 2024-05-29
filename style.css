@@ -5,12 +5,16 @@
     padding: 0;
     box-sizing: border-box;
 }
+::selection{
+    background-color: white;
+    color: #666;
+}
 :root{
     --text-color: #ccc;
     --background-color: rgba(226, 218, 244,0.2);
 
 }
-/* light-mode */
+/* light-mode for body class*/
 .light{
     height: 100vh;
     background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.5)), url(./img/background.jpeg);
@@ -22,7 +26,7 @@
     justify-content: center;
     align-items: center;
 }
-/* dark-mode */
+/* dark-mode for body class */
 .dark{
     height: 100vh;
     background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,1)), url(./img/background.jpeg);
@@ -84,6 +88,7 @@
     font-size: 1.8rem;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
+    text-shadow: 1px -1px 4px #666;
     position: fixed;
     top: 20px;
     left: 30px;
@@ -109,6 +114,7 @@
 #btn1:active{
     border: 2px solid white;
 }
+/* hide for desktop */
 .weather-header{
     display: flex;
     justify-content: space-between;
@@ -119,22 +125,25 @@
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     margin-left: 20px;
+    text-shadow: 1px -1px 4px #666;
     font-size: 1.4rem;
     display: none;
 }
+/* hide for desktop */
 #btn2{
     height: 45px;
     width: 50px;
     background-color: transparent;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: white;
     border: none;
     position: absolute;
-    top: 5px;
+    top: 16px;
     right: 20px;
     display: none;
 }
+/* input */
 input{
     height: 45px;
     width: 80%;
@@ -169,10 +178,10 @@ h3{
 }
 .parent{
     display: flex;
-    /* gap: 30px; */
+    gap: 30px;
     justify-content: center;
 }
-button{
+.form-button{
     height: 45px;
     width: 180px;
     margin-top: 20px !important;
@@ -183,10 +192,35 @@ button{
     box-shadow: 0px 0px 15px #666;
     border: none;
 }
-button:active{
+.form-button:active{
     border: 2px solid #000;
 }
-
+/* footer light mode  */
+.footer-light{
+    height: 90px;
+    width: 100%;
+    background-color: var(--background-color);
+    position: fixed;
+    bottom: 0;
+    box-shadow: 0px 0px 8px #666;
+}
+/* footer dark mode  */
+.footer-dark{
+    height: 90px;
+    width: 100%;
+    background-color: rgba(5, .5, 5, 0.1);
+    position: fixed;
+    bottom: 0;
+    box-shadow: 0px 0px 8px #666;
+}
+.footer-heading{
+    text-align: center;
+    padding-top: 10px;
+    font-family: 'poppins';
+    font-weight: 400 !important;
+    color: var(--text-color);
+    text-shadow: 1px -1px 4px #666;
+}
 
 /* media query add  */
 
@@ -199,13 +233,34 @@ button:active{
     }
 }
 @media screen and (max-width:530px) {
+    .navbar-light{
+        height: 80px;
+    }
+    .weather-heading{
+        /* display: none; */
+        font-size: 1.5rem !important;
+    }
+    #btn1{
+        /* display: none; */
+        font-size: 0.9rem;
+        width: 150px;
+        position: fixed;
+        top: 0;
+        right: 20px;
+    }
+    .footer-heading{
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width:380px) {
     .weather-heading{
         display: none;
     }
     #btn1{
         display: none;
     }
-    .weather-heading1{
+     .weather-heading1{
         display: block;
     }
     #btn2{
@@ -219,4 +274,26 @@ button:active{
         background-color: transparent;
         box-shadow: 0 0 0 #ccc;
     }
+    input{
+        width: 90%;
+        margin-top: 50px !important;
+    }
+    .form-button{
+        margin-top: 0px !important;
+    }
+    .footer-light{
+        background-color: transparent;
+        box-shadow: 0 0 0 #ccc;
+    }
+    .footer-dark{
+        background-color: transparent;
+        box-shadow: 0 0 0 #ccc;
+    }
+    .footer-heading{
+        /* display: none; */
+        font-size: 0.8rem;
+        position: relative;
+        top: 20px;
+    }
 }
+   
