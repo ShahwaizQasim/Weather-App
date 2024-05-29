@@ -12,6 +12,8 @@ const cityPressure = document.querySelector("#city_Pressure");
 const cityFeels = document.querySelector("#city_FeelsLike");
 const navbar = document.querySelector(".navbar-light");
 const footer = document.querySelector(".footer-light")
+const cityShow = document.querySelector("#cityShow");
+const conditionShow = document.querySelector("#cityCondition");
 const icon = document.querySelector("#weather-icon");
 
 const formHandler = async (event) => {
@@ -21,6 +23,8 @@ const formHandler = async (event) => {
     let city_temperature = myInput.value;
 
     message.innerText = "loading..."; // showing loading
+    cityShow.innerText = "";
+    conditionShow.innerText = "";
     temp.innerText = "";
     humidity.innerText = "";
     wind.innerText = "";
@@ -31,7 +35,7 @@ const formHandler = async (event) => {
     const response = await axios(
       `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric&q=${city_temperature}`
     );
-    // console.log(response);
+    console.log(response);
 
     message.innerText = "";
 
@@ -42,14 +46,16 @@ const formHandler = async (event) => {
     footer.style.boxShadow = "0px 0px 0px #ccc"; // response any par footer ka box shadow 0 kiya hai
 
   //  Api se weather ka data aya hai ussy print krwaya hai 
-    temp.innerHTML = `${response.data.main.temp} °C <br/> ${response.data.name}`;
+    cityShow.innerText = `Weather of ${response.data.name}`;
+    conditionShow.innerText = response.data.weather[0].description;
+    temp.innerHTML = `${response.data.main.temp} °C <br/>`;
     humidity.innerText = `Humidity: ${response.data.main.humidity} %`;
     wind.innerText = `Wind: ${response.data.wind.speed} km/h`;
     cityPressure.innerText = `Pressure: ${response.data.main.pressure}hpa`;
     cityFeels.innerText = `Feels Like: ${response.data.main.feels_like}°C`;
     //  const iconLink = `https://openweathermap.org/img/wn/01d.png`
-
     //  icon.src = iconLink
+    
   } catch (error) {
     //console.log(error);
     message.innerText = error?.response?.data?.message || "Unknown Error";
