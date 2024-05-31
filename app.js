@@ -54,7 +54,7 @@ const formHandler = async (event) => {
   //  Api se weather ka data aya hai ussy print krwaya hai 
     cityShow.innerText = `Weather of ${response.data.name}`;
     conditionShow.innerText = response.data.weather[0].description;
-    temp.innerHTML = `${response.data.main.temp} °C <br/>`;
+    temp.innerHTML = `${Math.round(response.data.main.temp)} °C <br/>`;
     humidity.innerText = `Humidity: ${response.data.main.humidity} %`;
     wind.innerText = `Wind: ${response.data.wind.speed} km/h`;
     cityPressure.innerText = `Pressure: ${response.data.main.pressure} mb`;
