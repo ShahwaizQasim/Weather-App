@@ -69,6 +69,8 @@ const formHandler = async (event) => {
     const Time = CurrentDate.toDateString();
     //console.log(Time);
     CurrentDateShow.innerText = Time;
+
+    form.reset(); // to clear input value only if form is submit successfully
     
   } catch (error) {
     //console.log(error);
@@ -80,7 +82,6 @@ const formHandler = async (event) => {
    
     //message.innerText = error?.response?.data?.message || "Unknown Error";
   } finally {
-    form.reset(); // to clear input value only if form is submit successfully
     Button.disabled = false; // response any ky bad button ko wapis enable kiya hai
     //console.log("finallay chala");
     message.style.display = 'none';
